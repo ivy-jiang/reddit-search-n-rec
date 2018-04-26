@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+  <head>
+    <title>Application</title>
+  </head>
+
+  <body>
+    <div class="row h-100">
+      <div class="col-lg-4">
+        <div class="masthead-content text-white py-5 py-md-0">
+          <h1 class="mb-3">Reddit Search n Rec</h1>
+          <p class="mb-5"><i>Searching Reddit Conversations</i></p>
+                  {% block content %}
+                  {% endblock %}
+
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+
+        {% block custocontent %}
+        {% endblock custocontent %}
+
+      </div>
+      <div class="col-lg-4">
+        {% block custotwo %}
+        {% endblock custotwo %}
+      </div>
+
+
+    </div>
+  </body>
+
+</html>

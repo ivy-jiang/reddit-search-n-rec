@@ -1,0 +1,9 @@
+apt-get update -y
+apt-get install python3-pip
+pip3 install -U spacy
+python3 -m spacy download en
+sudo pip3 install sense2vec==1.0.0a0
+pip3 install flask flask_bootstrap
+pip3 install praw
+
+ scp -r reference root@##########9:/tmp

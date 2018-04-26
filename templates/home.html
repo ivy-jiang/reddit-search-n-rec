@@ -1,0 +1,169 @@
+{% extends "layout.html" %}
+{% block content %}
+{{super()}}
+
+<form action="/" method="post">
+  <br>
+   <!-- <div class="form-group mb-2"> -->
+
+   <div class="form-group row">
+     <!-- <div class="form-group"> -->
+    <!-- <b>Keyword or Phrase: </b> -->
+      <label for="keywordp" class="col-6 col-form-label mx-auto">Keyword or Phrase</label>
+       <div class="col-6 mx-auto">
+    <input class="form-control" type="text" name="keyword_or_phrase" placeholder=" e.g. running" type="text" id="keywordp"> <br>
+ </div>
+  </div>
+
+
+  <div class="form-group row">
+    <!-- <div class="form-group"> -->
+    <!-- <b>Subreddit: </b> -->
+    <label for="subredditid" class="col-sm-6 col-form-label mx-auto">Subreddit</label>
+    <div class="col-sm-6 mx-auto">
+    <input class="form-control" type="text" name="subreddit_choice" placeholder=" e.g. xxfitness or all " type="text" id="subredditid"> <br>
+  </div>
+  </div>
+
+     <div class="form-group row">
+       <!-- <div class="form-group"> -->
+    <!-- <b>Timeframe of posts: </b> -->
+    <label for="timeframez" class="col-sm-6 col-form-label mx-auto">Timeframe of posts</label>
+    <div class="col-sm-6 mx-auto">
+    <select class="form-control form-control-sm" name="timeframe_choice" methods="GET" action="/" id="timeframez">
+
+       <option value="{{timeframe_choice[0]}}" SELECTED>{{timeframe_choice[0]}}</option>
+        {% for timeoption in timeframe_choice[1:] %}
+        <option value="{{timeoption}}">{{timeoption}}</option>
+        {% endfor %}
+    </select>
+  </div>
+  </div>
+
+
+     <div class="form-group row">
+       <!-- <div class="form-group"> -->
+    <!-- <b>Sort posts: </b> -->
+    <label for="sortz" class="col-sm-6 col-form-label mx-auto">Sort posts</label>
+  <div class="col-sm-6 mx-auto">
+    <select  class="form-control form-control-sm" name="sort_choice" methods="GET" action="/" id="sortz">
+
+       <option value="{{sort_choice[0]}}" SELECTED>{{sort_choice[0]}}</option>
+        {% for sortoption in sort_choice[1:] %}
+        <option value="{{sortoption}}">{{sortoption}}</option>
+        {% endfor %}
+    </select>
+  </div>
+  </div>
+
+
+    <!-- <b>Include similarities: </b> -->
+        <!-- <label for="inclds" class="col-sm-6 col-form-label mx-auto"> -->
+             <div class="form-group">
+
+
+               <div class="form-check">
+                 <input name="include_synonyms" value="yes_include"  class="form-check-input" type="checkbox" id="inclds">
+                 <label class="form-check-label" for="inclds">
+                   Include similarities
+                 </label>
+                 <!-- <input name="include_synonyms" value="yes_include"  class="form-check-input" type="checkbox" id="inclds"> -->
+
+               </div>
+             </div>
+
+     <!-- <label class="col-form-label col-sm-6" for="inclds">Include similarities</label>
+    <div class="col-sm-6 mx-auto">
+
+    <input name="include_synonyms" type="checkbox" value="yes_include" id="inclds">
+  </div> -->
+
+    <button type="submit" class="btn btn-primary mb-2" value="Submit Search">Submit Search</button>
+    <!-- <input type="submit", value="Submit Search"> -->
+
+  <!-- </div> -->
+</form>
+
+
+    <br>{{message2}}
+
+
+    {% endblock %}
+
+
+
+
+
+
+    {% block custocontent %}
+     <br>
+  <h3 class="text-secondary mb-0"> {{titletwo}} </h3><br>
+  {% for item in ourlist %}
+
+    <div class="reddit-embed" data-embed-media="www.redditmedia.com" data-embed-parent="false" data-embed-live="true" data-embed-created="2018-04-19T21:02:01.397Z"><a href="{{ item }}">Comment</a> from discussion <a href="{{ item }}">Has anyone -up?</a>.</div><script async src="https://www.redditstatic.com/comment-embed.js"></script>
+
+  {% endfor %}
+  <br><br>
+<!--
+  {% for item in ourlist %}
+  <p> {{ item }} </p>
+  {% endfor %} -->
+
+  <br>
+
+  {% endblock custocontent %}
+
+  {% block costco %}
+
+  <span class="{{iconz}}">
+          <i class="{{iconl}}"></i>
+        </span>
+
+
+
+  <p class="text-muted">
+  <br><b><i>{{titlethree}}</i></b>
+<br>
+  <i>{% for wor in wordrecs %}
+    {{wor}}<br>
+      {% endfor %}
+    <br></i>
+
+
+  <br>
+  </p>
+
+{% endblock costco %}
+
+
+{% block custotwo %}
+  <br>
+  <h3 class="text-secondary mb-0"> {{titleone}} </h3><br>
+
+
+  {% for orig in redditorig %}
+
+
+  <blockquote class="reddit-card" data-card-preview="1"><a href="{{ orig }}?ref=share&ref_source=embed">"Your arms are big for a girl"</a> from <a href="{{ orig }}">r/xxfitness</a></blockquote>
+  <script async src="//embed.redditmedia.com/widgets/platform.js" charset="UTF-8"></script>
+
+
+
+  {% endfor %}
+
+<!--
+    {% for orig in redditorig %}
+    <p> {{ orig }} </p>
+
+      {% endfor %} -->
+
+
+
+
+
+{% endblock custotwo %}
+
+
+
+<a href="{{ url_for('home') }}">Home page</a>
+<br>
